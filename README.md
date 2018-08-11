@@ -6,7 +6,7 @@ Beim ersten Aufruf werden ggf. benötigte Abhängigkeiten installiert (siehe `re
 Es werden die Zugangsdaten für DaWanda abgefragt und der Datendownload beginnt, dabei wird ein Fortschritt angezeigt.
 
 ```
-$ python3 dawanda.py
+$ python3 dawanda-exporter.py
 DaWanda username: youngage
 DaWanda password (not shown): 
 [*] output: dawanda_2018-08-11_11-44-30.zip
@@ -39,9 +39,9 @@ Zip file size: 7169920283 bytes, number of entries: 1630
 
 Für erweitere Funktionalitäten gibt es zusätzliche Parameter, die jedoch hauptsächlich für Entwicklungs- und Problemlösungszwecke gedacht sind:
 ```
-usage: dawanda.py [-h] [--exit-timeout EXIT_TIMEOUT] [--session SESSION]
-                  [--output OUTPUT] [--debug] [--skip-products]
-                  [--skip-images] [--skip-ratings]
+usage: dawanda-exporter.py [-h] [--exit-timeout EXIT_TIMEOUT]
+                           [--session SESSION] [--output OUTPUT] [--debug]
+                           [--skip-products] [--skip-images] [--skip-ratings]
 
 Dawanda Data Extractor
 

@@ -1,6 +1,10 @@
 # direnv
 /.direnv/
 
+# OS temporary files
+Thumbs.db
+.DS_Store
+
 # Python Cached Files
 *.pyc
 __pycache__
