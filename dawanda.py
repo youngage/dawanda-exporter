@@ -256,6 +256,10 @@ def main():
 
     output.close()
 
+    if args.session is None:
+        print('\033[K[*] Logging out.')
+        session.get(DAWANDA_BASEURL + '/account/logout')
+
     print('\033[K[+] done', end='')
     if not args.skip_products:
         print(' [', len(products), ' products]', sep='', end='')
