@@ -6,7 +6,7 @@ Beim ersten Aufruf werden ggf. benötigte Abhängigkeiten installiert (siehe `re
 Es werden die Zugangsdaten für DaWanda abgefragt und der Datendownload beginnt, dabei wird ein Fortschritt angezeigt.
 
 ```
-$ python3 dawanda.py 
+$ python3 dawanda.py
 DaWanda username: youngage
 DaWanda password (not shown): 
 [*] output: dawanda_2018-08-11_11-44-30.zip
@@ -15,10 +15,11 @@ DaWanda password (not shown):
     got 107
 [*] fetching products
     got 711
-[*] Logging out.[+] done [711 products] [107 ratings]
+[*] Logging out.
+[+] done [711 products] [107 ratings]
 ```
 
-Das Ergebnis ist eine ZIP-Datei mit mehreren JSON-Dateien sowie allen Produktbildern in einem Unterordner:
+Das Ergebnis ist eine ZIP-Datei mit mehreren maschinenlesbaren JSON-Dateien (Profil, Produkte sowie Bewertungen) und allen Produktbildern in einem Unterordner:
 ```
 Archive:  dawanda_2018-08-11_11-44-30.zip
 Zip file size: 7169920283 bytes, number of entries: 1630
@@ -31,3 +32,4 @@ Zip file size: 7169920283 bytes, number of entries: 1630
 -rw-------  3.0 unx    21031 tx defN 18-Aug-11 12:54 ratings.json
 1630 files, 7175253081 bytes uncompressed, 7169687659 bytes compressed:  0.1%
 ```
+
