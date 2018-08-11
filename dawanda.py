@@ -5,7 +5,7 @@ import json
 import logging
 import sys
 from tempfile import mkstemp
-from time import strftime
+from time import sleep, strftime
 import traceback
 from zipfile import ZipFile, ZIP_DEFLATED, ZIP_STORED
 
@@ -174,6 +174,7 @@ def main():
     session = requests.Session()
 
     parser = argparse.ArgumentParser('Dawanda Data Extractor')
+    parser.add_argument('--exit-timeout', type=int, default=5, help='wait given number of seconds before exiting (default: %(default)ds)')
     parser.add_argument('--session', help='Dawanda-Session ID to use, don\'t ask for credentials or log in at all')
     parser.add_argument('--output', '-o', default=None, help='ZIP file returning all data, defaults to "dawanda_YYYY-MM-DD_HH-MM_SS.zip"')
     parser.add_argument('--debug', action='store_true')
@@ -205,6 +206,7 @@ def main():
         login_req = session.post(DAWANDA_BASEURL + '/core/sessions', data={'user[email_or_username]': dw_user, 'user[password]': dw_password, 'user[remember_me]': 'true'})
         if login_req.status_code != 201:
             print('LOGIN FAILED.', file=sys.stderr)
+            sleep(args.exit_timeout)
             sys.exit(1)
 
     print('[*] fetching profile ... ', end='')
@@ -213,6 +215,7 @@ def main():
     if not profile.get('logged_in', False):
         print('NOT LOGGED IN')
         output.close()
+        sleep(args.exit_timeout)
         sys.exit(1)
     print(profile.get('username'))
 
@@ -259,6 +262,8 @@ def main():
     if not args.skip_ratings:
         print(' [', len(ratings), ' ratings]', sep='', end='')
     print()
+
+    sleep(args.exit_timeout)
 
 
 if __name__ == '__main__':
