@@ -1,0 +1,15 @@
+# direnv
+/.direnv/
+
+# Python Cached Files
+*.pyc
+__pycache__
+
+# generated files
+/dawanda_*.zip
+/product_images/
+/productlist.json
+/products.json
+/profile.json
+/ratings.json
+
