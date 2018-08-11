@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from getpass import getpass
 import json
 import logging
 import sys
@@ -199,7 +200,12 @@ def main():
         session.cookies.set('_dawanda_session', args.session, domain='.dawanda.com', path='/')
     else:
         # we need the user to log in
-        raise NotImplementedError()
+        dw_user = input('DaWanda user: ')
+        dw_password = getpass('DaWanda password (not shown): ')
+        login_req = session.post(DAWANDA_BASEURL + '/core/sessions', data={'user[email_or_username]': dw_user, 'user[password]': dw_password, 'user[remember_me]': 'true'})
+        if login_req.status_code != 201:
+            print('LOGIN FAILED.', file=sys.stderr)
+            sys.exit(1)
 
     print('[*] fetching profile ... ', end='')
     profile = session.get(DAWANDA_BASEURL + '/current_user/profile').json()
