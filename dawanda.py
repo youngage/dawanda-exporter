@@ -183,10 +183,6 @@ def main():
     parser.add_argument('--skip-ratings', action='store_true')
     args = parser.parse_args()
 
-    output_filename = args.output or strftime('dawanda_%Y-%m-%d_%H-%M-%S.zip')
-    print('[*] output:', output_filename)
-    output = ZipFile(output_filename, 'w')
-
     logging.basicConfig()
     if args.debug:
         from http import client as http_client
@@ -208,6 +204,10 @@ def main():
             print('LOGIN FAILED.', file=sys.stderr)
             sleep(args.exit_timeout)
             sys.exit(1)
+
+    output_filename = args.output or strftime('dawanda_%Y-%m-%d_%H-%M-%S.zip')
+    print('[*] output:', output_filename)
+    output = ZipFile(output_filename, 'w')
 
     print('[*] fetching profile ... ', end='')
     profile = session.get(DAWANDA_BASEURL + '/current_user/profile').json()
