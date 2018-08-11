@@ -173,14 +173,14 @@ def main():
     data = {}
     session = requests.Session()
 
-    parser = argparse.ArgumentParser('Dawanda Data Extractor')
+    parser = argparse.ArgumentParser(description='Dawanda Data Extractor')
     parser.add_argument('--exit-timeout', type=int, default=5, help='wait given number of seconds before exiting (default: %(default)ds)')
     parser.add_argument('--session', help='Dawanda-Session ID to use, don\'t ask for credentials or log in at all')
     parser.add_argument('--output', '-o', default=None, help='ZIP file returning all data, defaults to "dawanda_YYYY-MM-DD_HH-MM_SS.zip"')
-    parser.add_argument('--debug', action='store_true')
-    parser.add_argument('--skip-products', action='store_true')
-    parser.add_argument('--skip-images', action='store_true')
-    parser.add_argument('--skip-ratings', action='store_true')
+    parser.add_argument('--debug', action='store_true', help='show HTTP requests and replies')
+    parser.add_argument('--skip-products', action='store_true', help='do not fetch the products (nor their images)')
+    parser.add_argument('--skip-images', action='store_true', help='do not fetch product images')
+    parser.add_argument('--skip-ratings', action='store_true', help='do not fetch ratings')
     args = parser.parse_args()
 
     logging.basicConfig()

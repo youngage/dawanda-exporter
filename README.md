@@ -33,3 +33,30 @@ Zip file size: 7169920283 bytes, number of entries: 1630
 1630 files, 7175253081 bytes uncompressed, 7169687659 bytes compressed:  0.1%
 ```
 
+## Benutzung
+
+**Im Regelfall sind keine weiteren Parameter oder Einstellungen notwendig, die benötigten Zugangsdaten werden interaktiv erfragt.**
+
+Für erweitere Funktionalitäten gibt es zusätzliche Parameter, die jedoch hauptsächlich für Entwicklungs- und Problemlösungszwecke gedacht sind:
+```
+usage: dawanda.py [-h] [--exit-timeout EXIT_TIMEOUT] [--session SESSION]
+                  [--output OUTPUT] [--debug] [--skip-products]
+                  [--skip-images] [--skip-ratings]
+
+Dawanda Data Extractor
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --exit-timeout EXIT_TIMEOUT
+                        wait given number of seconds before exiting (default:
+                        5s)
+  --session SESSION     Dawanda-Session ID to use, don't ask for credentials
+                        or log in at all
+  --output OUTPUT, -o OUTPUT
+                        ZIP file returning all data, defaults to
+                        "dawanda_YYYY-MM-DD_HH-MM_SS.zip"
+  --debug               show HTTP requests and replies
+  --skip-products       do not fetch the products (nor their images)
+  --skip-images         do not fetch product images
+  --skip-ratings        do not fetch ratings
+```
